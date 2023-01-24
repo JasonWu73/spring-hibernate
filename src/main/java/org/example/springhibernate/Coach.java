@@ -6,4 +6,6 @@ package org.example.springhibernate;
 public interface Coach {
 
     String getDailyWorkout();
+
+    String getDailyFortune();
 }

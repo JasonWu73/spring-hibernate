@@ -16,6 +16,7 @@ public class HelloSpringApp {
 
         // 调用 Bean 中的方法
         System.out.println(coach.getDailyWorkout());
+        System.out.println(coach.getDailyFortune());
 
         // 关闭 Spring 上下文
         context.close();
