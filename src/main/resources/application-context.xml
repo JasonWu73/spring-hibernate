@@ -14,10 +14,12 @@
     <constructor-arg ref="fortune"/>
   </bean>
 
+  <context:property-placeholder location="classpath:sport.properties"/>
+
   <bean id="cricketCoach" class="org.example.springhibernate.CricketCoach">
     <property name="fortuneService" ref="fortune"/>
-    <property name="emailAddress" value="wuxianjiezh@gmail.com"/>
-    <property name="team" value="太阳队"/>
+    <property name="emailAddress" value="${foo.emailAddress}"/>
+    <property name="team" value="${foo.team}"/>
   </bean>
 
 </beans>
