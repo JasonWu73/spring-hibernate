@@ -14,4 +14,8 @@
     <constructor-arg ref="fortune"/>
   </bean>
 
+  <bean id="cricketCoach" class="org.example.springhibernate.CricketCoach">
+    <property name="fortuneService" ref="fortune"/>
+  </bean>
+
 </beans>
