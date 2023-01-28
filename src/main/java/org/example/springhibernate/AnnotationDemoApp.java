@@ -3,22 +3,23 @@ package org.example.springhibernate;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
+ * 注解 Demo 主程序.
+ *
  * @author 吴仙杰
  **/
-public class HelloSpringApp {
+public class AnnotationDemoApp {
 
     public static void main(String[] args) {
-        // 加载 Spring 配置文件
+        // read spring config file
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
 
-        // 从 Spring 容器中获取 Bean
-        Coach coach = context.getBean("coach", Coach.class);
+        // get the bean from spring container
+        Coach coach = context.getBean("thatSillyCoach", Coach.class);
 
-        // 调用 Bean 中的方法
+        // call a method on the bean
         System.out.println(coach.getDailyWorkout());
-        System.out.println(coach.getDailyFortune());
 
-        // 关闭 Spring 上下文
+        // close the context
         context.close();
     }
 }
