@@ -19,5 +19,7 @@ public class BeanScopeDemoApp {
         System.out.println("coach1 == coach2: " + isSame);
         System.out.println("coach1 memory location: " + coach1);
         System.out.println("coach2 memory location: " + coach2);
+
+        context.close();
     }
 }

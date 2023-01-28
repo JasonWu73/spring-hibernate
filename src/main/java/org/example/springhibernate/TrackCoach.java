@@ -16,11 +16,19 @@ public class TrackCoach implements Coach {
 
     @Override
     public String getDailyWorkout() {
-        return "快跑 5 公里";
+        return "Run a hard 5k";
     }
 
     @Override
     public String getDailyFortune() {
         return fortuneService.getFortune();
+    }
+
+    public void init() {
+        System.out.println("TrackCoach: inside method init");
+    }
+
+    public void destroy() {
+        System.out.println("TrackCoach: inside method destroy");
     }
 }
