@@ -13,4 +13,11 @@ public interface Coach {
      * @return 日常训练描述
      */
     String getDailyWorkout();
+
+    /**
+     * 获取每日财富.
+     *
+     * @return 每日财富信息
+     */
+    String getDailyFortune();
 }
