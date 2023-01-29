@@ -22,6 +22,11 @@ public class AnnotationDemoApp {
         // call method to get the daily fortune
         System.out.println(coach.getDailyFortune());
 
+        // call method to get injected value
+        TennisCoach tennisCoach = context.getBean("tennisCoach", TennisCoach.class);
+        System.out.println(tennisCoach.getEmail());
+        System.out.println(tennisCoach.getTeam());
+
         // close the context
         context.close();
     }
