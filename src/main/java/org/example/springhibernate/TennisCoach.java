@@ -1,6 +1,7 @@
 package org.example.springhibernate;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Component;
 public class TennisCoach implements Coach {
 
     @Autowired
+    @Qualifier("RESTFortuneService")
     private FortuneService fortuneService;
 
     // define a default constructor
