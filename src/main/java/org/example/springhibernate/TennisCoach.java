@@ -6,13 +6,16 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 /**
  * 网球教练.
  *
  * @author 吴仙杰
  **/
 @Component
-@Scope("prototype")
+//@Scope("prototype")
 public class TennisCoach implements Coach {
 
     @Value("${foo.email}")
@@ -28,6 +31,20 @@ public class TennisCoach implements Coach {
     // define a default constructor
     public TennisCoach() {
         System.out.println(">> TennisCoach: inside default constructor");
+    }
+
+    // define my init method
+    // code will execute after constructor and after injection of dependencies
+    @PostConstruct
+    public void init() {
+        System.out.println(">> TennisCoach: inside of init() method");
+    }
+
+    // define my destroy method
+    // code will execute before bean is destroyed
+    @PreDestroy
+    public void destroy() {
+        System.out.println(">> TennisCoach: inside of destroy() method");
     }
 
     @Override
