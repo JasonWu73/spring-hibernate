@@ -10,23 +10,27 @@
   <name>spring-hibernate Maven Webapp</name>
 
   <properties>
+    <!-- JDK 版本 -->
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
 
+    <!-- 依赖库版本 -->
     <spring.version>6.0.3</spring.version>
+    <javax.annotation.version>1.3.2</javax.annotation.version>
+    <jakarta.jstl.version>3.0.0</jakarta.jstl.version>
   </properties>
 
   <dependencies>
     <!-- Spring 依赖 -->
     <dependency>
       <groupId>org.springframework</groupId>
-      <artifactId>spring-jdbc</artifactId>
+      <artifactId>spring-webmvc</artifactId>
       <version>${spring.version}</version>
     </dependency>
 
     <dependency>
       <groupId>org.springframework</groupId>
-      <artifactId>spring-webmvc</artifactId>
+      <artifactId>spring-jdbc</artifactId>
       <version>${spring.version}</version>
     </dependency>
 
@@ -34,20 +38,14 @@
     <dependency>
       <groupId>javax.annotation</groupId>
       <artifactId>javax.annotation-api</artifactId>
-      <version>1.3.2</version>
+      <version>${javax.annotation.version}</version>
     </dependency>
 
     <!-- JSTL -->
     <dependency>
-      <groupId>javax.servlet.jsp.jstl</groupId>
-      <artifactId>jstl</artifactId>
-      <version>1.2</version>
-    </dependency>
-
-    <dependency>
-      <groupId>javax.servlet.jsp.jstl</groupId>
-      <artifactId>jstl-api</artifactId>
-      <version>1.2</version>
+      <groupId>jakarta.servlet.jsp.jstl</groupId>
+      <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+      <version>${jakarta.jstl.version}</version>
     </dependency>
   </dependencies>
 
