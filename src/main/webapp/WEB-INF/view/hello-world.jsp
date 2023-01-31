@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Hello World - Confirmation Form</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/asserts/css/p.css">
   </head>
   <body>
     <h1>Hello World of Spring!</h1>
