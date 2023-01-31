@@ -20,7 +20,7 @@ public class StudentController {
 
     @PostMapping("/process-form")
     public String processForm(@ModelAttribute Student student) {
-        Console.log("Student: firstName={}, lastName={}", student.getFirstName(), student.getLastName());
+        Console.log(student);
         return "formtag/student-confirmation";
     }
 }

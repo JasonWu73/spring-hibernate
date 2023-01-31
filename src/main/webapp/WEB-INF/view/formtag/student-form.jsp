@@ -6,8 +6,13 @@
   </head>
   <body>
     <form:form action="process-form" method="POST" modelAttribute="student">
-      <label>First Name: <form:input path="firstName"/></label>
-      <label>Last Name: <form:input path="lastName"/></label>
+      <p><label>First Name: <form:input path="firstName"/></label></p>
+      <p><label>Last Name: <form:input path="lastName"/></label></p>
+      <p>Country:
+        <form:select path="country">
+          <form:options items="${student.countryOptions}"/>
+        </form:select>
+      </p>
       <button type="submit">Submit</button>
     </form:form>
   </body>
