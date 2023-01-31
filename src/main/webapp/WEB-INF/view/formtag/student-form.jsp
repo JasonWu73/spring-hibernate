@@ -10,7 +10,7 @@
       <p><label>Last Name: <form:input path="lastName"/></label></p>
       <p>Country:
         <form:select path="country">
-          <form:options items="${student.countryOptions}"/>
+          <form:options items="${countryOptions}"/>
         </form:select>
       </p>
       <button type="submit">Submit</button>
