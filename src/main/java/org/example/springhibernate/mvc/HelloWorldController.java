@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Locale;
 import java.util.Optional;
@@ -35,6 +36,23 @@ public class HelloWorldController {
 
         // create the message
         String resultMessage = "Yo! " + (studentName.isEmpty() ? "Anonymous" : studentName);
+
+        // add message to the model
+        model.addAttribute("message", resultMessage);
+
+        return "hello-world";
+    }
+
+    /**
+     * 将姓名转为大写形式，并增加 message 字段值.
+     */
+    @PostMapping("process-form-shout-v2")
+    public String shoutFormV2(@RequestParam String studentName, Model model) {
+        // convert the data to all caps
+        studentName = studentName.toUpperCase(Locale.ROOT);
+
+        // create the message
+        String resultMessage = "Hi my friend: " + (studentName.isEmpty() ? "Anonymous" : studentName);
 
         // add message to the model
         model.addAttribute("message", resultMessage);

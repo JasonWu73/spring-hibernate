@@ -4,7 +4,7 @@
     <title>Hello World - Input Form</title>
   </head>
   <body>
-    <form action="process-form-shout" method="POST">
+    <form action="process-form-shout-v2" method="POST">
       <label>Student Name: <input type="text" name="studentName" placeholder="What's your name?"></label>
       <button type="submit">Submit</button>
     </form>
