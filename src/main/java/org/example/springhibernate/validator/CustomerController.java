@@ -2,25 +2,17 @@ package org.example.springhibernate.validator;
 
 import cn.hutool.core.lang.Console;
 import jakarta.validation.Valid;
-import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/customer")
 public class CustomerController {
-
-    /**
-     * 自动处理表单参数: 去除 String 参数的前后空格, 且当仅包含空白字符时, 设置为 null.
-     */
-    @InitBinder
-    public void setStringTrimmer(WebDataBinder webDataBinder) {
-        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
-        webDataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
-    }
 
     @GetMapping("/show-form")
     public String showForm(Model model) {
@@ -37,6 +29,9 @@ public class CustomerController {
     ) {
         // for debugging
         Console.log("Last Name: |{}|", customer.getLastName());
+        Console.log("================>");
+        Console.log("The Binding Result: {}", bindingResult);
+        Console.log("<================");
 
         if (bindingResult.hasErrors()) {
             return "validator/customer-form";

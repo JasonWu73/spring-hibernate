@@ -12,6 +12,7 @@ public class Customer {
     @Size(min = 1, message = "is required")
     private String lastName;
 
+    // typeMismatch.customer.freePasses
     @NotNull(message = "is required")
     @Min(value = 0, message = "must be greater than or equal to 0")
     @Max(value = 10, message = "must be less than or equal to 10")
