@@ -8,5 +8,6 @@
     <hr>
     <p><a href="hello-world-form">Hello World Form</a></p>
     <p><a href="student/show-form">Student Form</a></p>
+    <p><a href="customer/show-form">Customer Form</a></p>
   </body>
 </html>
