@@ -28,6 +28,10 @@
         <form:errors path="postalCode" cssClass="error"/>
       </div>
       <div>
+        <label>Course Code: <form:input path="courseCode"/></label>
+        <form:errors path="courseCode" cssClass="error"/>
+      </div>
+      <div>
         <button type="submit">Submit</button>
       </div>
     </form:form>

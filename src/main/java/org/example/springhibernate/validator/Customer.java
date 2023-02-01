@@ -20,4 +20,7 @@ public class Customer {
 
     @Pattern(regexp = "^[a-zA-z0-9]{5}$", message = "only 5 chars/digits")
     private String postalCode;
+
+    @CourseCode(values = {"TOP", "LOL"}, message = "必需以 TOP 或 LOL 开头")
+    private String courseCode;
 }
