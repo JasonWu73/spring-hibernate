@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class TestJdbc {
 
     public static void main(String[] args) {
-        String jdbcUrl = getJdbcUrl();
+        String jdbcUrl = "jdbc:mysql://localhost:3306/hibernate?useSSL=false&serverTimezone=Asia/Shanghai&";
         String userName = "root";
         String password = "qwe@123";
 
@@ -20,16 +20,5 @@ public class TestJdbc {
             throw new RuntimeException(e);
         }
         Console.log("连接成功!!!");
-    }
-
-    private static String getJdbcUrl() {
-        return "jdbc:mysql://localhost:3306/hibernate?" +
-            "allowPublicKeyRetrieval=true&" +
-            "useSSL=false&" +
-            "serverTimezone=Asia/Shanghai&" +
-            "useUnicode=true&" +
-            "characterEncoding=utf8&" +
-            "autoReconnect=true&" +
-            "failOverReadOnly=false";
     }
 }
