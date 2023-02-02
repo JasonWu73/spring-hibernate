@@ -50,65 +50,6 @@
       <version>${hutool.version}</version>
     </dependency>
 
-    <!-- Spring 依赖 -->
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-webmvc</artifactId>
-      <version>${spring.version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-jdbc</artifactId>
-      <version>${spring.version}</version>
-    </dependency>
-
-    <!-- @PostConstruct 和 @PreDestroy -->
-    <dependency>
-      <groupId>javax.annotation</groupId>
-      <artifactId>javax.annotation-api</artifactId>
-      <version>${javax.annotation.version}</version>
-    </dependency>
-
-    <!-- Tomcat 容器自带的依赖, 也是 JSTL API 的依赖 -->
-    <dependency>
-      <groupId>jakarta.servlet</groupId>
-      <artifactId>jakarta.servlet-api</artifactId>
-      <version>${jakarta.servlet-api.version}</version>
-      <scope>provided</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>jakarta.el</groupId>
-      <artifactId>jakarta.el-api</artifactId>
-      <version>${jakarta.el-api.version}</version>
-      <scope>provided</scope>
-    </dependency>
-
-    <!-- Tomcat 10: JSTL API, Tomcat 容器未提供 -->
-    <dependency>
-      <groupId>jakarta.servlet.jsp.jstl</groupId>
-      <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
-      <version>${jakarta.servlet.jsp.jstl-api.version}</version>
-    </dependency>
-
-    <!-- Tomcat 10: JSTL 实现 -->
-    <!-- JSP 中导入标签的 URL 为`http://java.sun.com/jstl/core_rt`,
-    而非 `http://java.sun.com/jstl/core`
-    -->
-    <dependency>
-      <groupId>org.glassfish.web</groupId>
-      <artifactId>jakarta.servlet.jsp.jstl</artifactId>
-      <version>${jakarta.servlet.jsp.jstl.version}</version>
-    </dependency>
-
-    <!-- Hibernate Validator -->
-    <dependency>
-      <groupId>org.hibernate.validator</groupId>
-      <artifactId>hibernate-validator</artifactId>
-      <version>${hibernate-validator.version}</version>
-    </dependency>
-
     <!-- Hibernate 项目所需依赖 -->
     <dependency>
       <groupId>org.hibernate.orm</groupId>
