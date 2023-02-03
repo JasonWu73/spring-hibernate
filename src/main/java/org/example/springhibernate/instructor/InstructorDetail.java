@@ -3,6 +3,7 @@ package org.example.springhibernate.instructor;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @NoArgsConstructor
@@ -20,6 +21,10 @@ public class InstructorDetail {
 
     @Column(name = "hobby")
     private String hobby;
+
+    @ToString.Exclude
+    @OneToOne(mappedBy = "instructorDetail", cascade = CascadeType.ALL)
+    private Instructor instructor;
 
     public InstructorDetail(String youtubeChannel, String hobby) {
         this.youtubeChannel = youtubeChannel;
