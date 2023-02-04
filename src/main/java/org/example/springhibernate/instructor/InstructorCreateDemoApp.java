@@ -13,6 +13,7 @@ public class InstructorCreateDemoApp {
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Instructor.class)
                 .addAnnotatedClass(InstructorDetail.class)
+                .addAnnotatedClass(Course.class)
                 .buildSessionFactory()
         ) {
             Session session = sessionFactory.getCurrentSession();

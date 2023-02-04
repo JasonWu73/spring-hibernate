@@ -16,3 +16,13 @@ create table instructor
     instructor_detail_id int unsigned,
     foreign key (instructor_detail_id) references instructor_detail (id)
 );
+
+drop table if exists course;
+create table course
+(
+    id            int unsigned not null auto_increment primary key,
+    title         varchar(128),
+    instructor_id int unsigned,
+    foreign key (instructor_id) references instructor (id),
+    unique (title)
+);
