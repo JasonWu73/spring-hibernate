@@ -3,6 +3,7 @@ package org.example.springhibernate.instructor;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,10 +28,12 @@ public class Instructor {
     @Column(name = "email")
     private String email;
 
+    @ToString.Exclude
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "instructor_detail_id")
     private InstructorDetail instructorDetail;
 
+    @ToString.Exclude
     @OneToMany(
         mappedBy = "instructor",
         cascade = {

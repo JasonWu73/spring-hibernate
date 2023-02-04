@@ -3,6 +3,7 @@ package org.example.springhibernate.instructor;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @NoArgsConstructor
@@ -18,6 +19,7 @@ public class Course {
     @Column(name = "title")
     private String title;
 
+    @ToString.Exclude
     @ManyToOne(cascade = {
         CascadeType.PERSIST,
         CascadeType.MERGE,
