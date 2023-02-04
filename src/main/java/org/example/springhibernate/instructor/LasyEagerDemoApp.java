@@ -40,7 +40,9 @@ public class LasyEagerDemoApp {
                 transaction.commit();
             } catch (Exception e) {
                 // 异常流程, 回滚事务
-                transaction.rollback();
+                if (transaction.isActive()) {
+                    transaction.rollback();
+                }
                 throw new RuntimeException(e);
             }
         }
