@@ -35,6 +35,7 @@ public class Instructor {
 
     @ToString.Exclude
     @OneToMany(
+        fetch = FetchType.LAZY,
         mappedBy = "instructor",
         cascade = {
             CascadeType.PERSIST,
