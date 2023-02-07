@@ -34,3 +34,12 @@ create table review
     course_id int unsigned,
     foreign key (course_id) references course (id)
 );
+
+create table course_student
+(
+    course_id int unsigned not null,
+    student_id int unsigned not null,
+    primary key (course_id, student_id),
+    foreign key (course_id) references course (id),
+    foreign key (student_id) references student (id)
+);

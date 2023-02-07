@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.example.springhibernate.student.Student;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,10 +38,20 @@ public class Course {
     @JoinColumn(name = "course_id")
     private List<Review> reviews;
 
+    @ToString.Exclude
+    @ManyToMany
+    @JoinTable(
+        name = "course_student",
+        joinColumns = @JoinColumn(name = "course_id"),
+        inverseJoinColumns = @JoinColumn(name = "student_id")
+    )
+    private List<Student> students;
+
     public Course(String title, Instructor instructor) {
         this.title = title;
         this.instructor = instructor;
         this.reviews = new ArrayList<>();
+        this.students = new ArrayList<>();
     }
 
     /**
@@ -52,5 +63,16 @@ public class Course {
         if (review == null) return;
 
         reviews.add(review);
+    }
+
+    /**
+     * 添加学生。
+     *
+     * @param student 报名课程的学生
+     */
+    public void addStudent(Student student) {
+        if (student == null) return;
+
+        students.add(student);
     }
 }
