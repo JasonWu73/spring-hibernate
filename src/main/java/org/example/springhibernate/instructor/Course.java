@@ -5,6 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @Entity
@@ -29,8 +32,25 @@ public class Course {
     @JoinColumn(name = "instructor_id")
     private Instructor instructor;
 
+    @ToString.Exclude
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "course_id")
+    private List<Review> reviews;
+
     public Course(String title, Instructor instructor) {
         this.title = title;
         this.instructor = instructor;
+        this.reviews = new ArrayList<>();
+    }
+
+    /**
+     * 添加课程评论。
+     *
+     * @param review 需要保存的评论
+     */
+    public void addReview(Review review) {
+        if (review == null) return;
+
+        reviews.add(review);
     }
 }

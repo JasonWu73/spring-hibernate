@@ -26,3 +26,11 @@ create table course
     foreign key (instructor_id) references instructor (id),
     unique (title)
 );
+
+create table review
+(
+    id        int unsigned not null auto_increment primary key,
+    comment   varchar(255),
+    course_id int unsigned,
+    foreign key (course_id) references course (id)
+);
