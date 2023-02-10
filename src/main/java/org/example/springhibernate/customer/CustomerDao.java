@@ -20,7 +20,10 @@ public class CustomerDao {
      */
     public List<Customer> getCustomers() {
         Session session = sessionFactory.getCurrentSession();
-        return session.createQuery("from Customer", Customer.class)
+        return session.createQuery(
+                "from Customer c order by c.lastName",
+                Customer.class
+            )
             .getResultList();
     }
 
