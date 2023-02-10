@@ -48,8 +48,13 @@ public class CustomService {
      *
      * @param customer 最新的客户数据
      */
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public void update(Customer customer) {
         customerDao.update(customer);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void deleteCustomer(long customerId) {
+        customerDao.delete(customerId);
     }
 }

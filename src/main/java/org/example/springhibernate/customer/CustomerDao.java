@@ -57,4 +57,10 @@ public class CustomerDao {
         Session session = sessionFactory.getCurrentSession();
         session.merge(customer);
     }
+
+    public void delete(long customerId) {
+        Session session = sessionFactory.getCurrentSession();
+        Customer customer = session.get(Customer.class, customerId);
+        session.remove(customer);
+    }
 }
