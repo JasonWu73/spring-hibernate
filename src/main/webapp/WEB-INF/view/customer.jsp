@@ -6,12 +6,10 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
   </head>
   <body>
-    <header class="header">
-      <h1 class="header__title">CRM - Customer Relationship Manager</h1>
-    </header>
+    <jsp:include page="customer-header.jsp"/>
 
     <nav class="nav">
-      <button class="button">Add Customer</button>
+      <button class="button" onclick="window.location.href='customer/add'">Add Customer</button>
     </nav>
 
     <table class="table">

@@ -1,4 +1,4 @@
-/* Table CSS */
+/* Table Style */
 * {
   padding: 0;
   margin: 0;
@@ -39,6 +39,11 @@ body {
   cursor: pointer;
 }
 
+.button--cancel {
+  background-color: #ddd;
+  color: black;
+}
+
 .table {
   border-collapse: collapse;
   width: 100%;
@@ -64,4 +69,28 @@ body {
   text-align: left;
   background-color: #04AA6D;
   color: white;
+}
+
+/* Form Style */
+.form {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.form__label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+.form__input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.error {
+  color: red;
+  font-style: italic;
 }

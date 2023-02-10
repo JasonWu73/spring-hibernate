@@ -21,4 +21,14 @@ public class CustomService {
     public List<Customer> getCustomers() {
         return customerDao.getCustomers();
     }
+
+    /**
+     * 保存客户。
+     *
+     * @param customer 需要保存的客户
+     */
+    @Transactional(rollbackFor = Exception.class)
+    public void save(Customer customer) {
+        customerDao.save(customer);
+    }
 }

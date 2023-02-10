@@ -23,4 +23,14 @@ public class CustomerDao {
         return session.createQuery("from Customer", Customer.class)
             .getResultList();
     }
+
+    /**
+     * 保存客户。
+     *
+     * @param customer 需要保存的客户
+     */
+    public void save(Customer customer) {
+        Session session = sessionFactory.getCurrentSession();
+        session.persist(customer);
+    }
 }

@@ -1,6 +1,7 @@
 package org.example.springhibernate.customer;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,12 +17,15 @@ public class Customer {
     private Long id;
 
     @Column(name = "first_name")
+    @NotBlank(message = "First name must not be empty")
     private String firstName;
 
     @Column(name = "last_name")
+    @NotBlank(message = "Last name must not be empty")
     private String lastName;
 
     @Column(name = "email")
+    @NotBlank(message = "Email must not be empty")
     private String email;
 
     public Customer(String firstName, String lastName, String email) {
