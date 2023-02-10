@@ -58,9 +58,15 @@ public class CustomerDao {
         session.merge(customer);
     }
 
+    /**
+     * 根据客户 id 删除客户。
+     *
+     * @param customerId 需要删除的客户 id
+     */
     public void delete(long customerId) {
         Session session = sessionFactory.getCurrentSession();
-        Customer customer = session.get(Customer.class, customerId);
-        session.remove(customer);
+        session.createMutationQuery("delete Customer c where c.id = :id")
+            .setParameter("id", customerId)
+            .executeUpdate();
     }
 }

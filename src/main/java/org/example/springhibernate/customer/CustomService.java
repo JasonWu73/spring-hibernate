@@ -53,6 +53,11 @@ public class CustomService {
         customerDao.update(customer);
     }
 
+    /**
+     * 根据客户 id 删除客户。
+     *
+     * @param customerId 需要删除的客户 id
+     */
     @Transactional(rollbackFor = Exception.class)
     public void deleteCustomer(long customerId) {
         customerDao.delete(customerId);

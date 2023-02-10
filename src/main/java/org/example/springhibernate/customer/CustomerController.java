@@ -73,6 +73,12 @@ public class CustomerController {
         return "redirect:/customer";
     }
 
+    /**
+     * 删除客户。
+     *
+     * @param customerId 需要删除的客户 id
+     * @return 删除成功则重定向至客户列表页
+     */
     @GetMapping("/delete")
     public String deleteCustomer(@RequestParam long customerId) {
         customerService.deleteCustomer(customerId);
