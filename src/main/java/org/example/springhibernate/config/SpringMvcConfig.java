@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
@@ -27,6 +28,11 @@ public class SpringMvcConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         // 静态资源配置, 位于 `src/main/webapp/asserts` 下
         // JSP 中使用为 `${pageContext.request.contextPath}/asserts/css/p.css`
-        registry.addResourceHandler("/asserts/**").addResourceLocations("/asserts/");
+        registry.addResourceHandler("/assets/**").addResourceLocations("/assets/");
+    }
+
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/").setViewName("index");
     }
 }

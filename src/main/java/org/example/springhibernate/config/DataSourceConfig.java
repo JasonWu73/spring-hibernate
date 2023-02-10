@@ -44,6 +44,7 @@ public class DataSourceConfig {
     public SessionFactory sessionFactory() {
         LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
         sessionFactoryBean.setDataSource(dataSource());
+        sessionFactoryBean.setPackagesToScan("org.example.springhibernate");
 
         Properties properties = new Properties();
         properties.put("hibernate.show_sql", true);
