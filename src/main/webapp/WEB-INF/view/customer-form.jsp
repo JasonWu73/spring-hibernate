@@ -10,6 +10,9 @@
 
     <h2>Save Customer</h2>
     <form:form action="save" method="POST" modelAttribute="customer" cssClass="form">
+      <%-- 设置 id --%>
+      <form:hidden path="id"/>
+
       <div>
         <label for="first-name" class="form__label">First Name</label>
         <form:input path="firstName" id="first-name" cssClass="form__input"/>

@@ -28,6 +28,17 @@ public class CustomerDao {
     }
 
     /**
+     * 根据客户 id 获取客户。
+     *
+     * @param customerId 客户 id
+     * @return 客户
+     */
+    public Customer getCustomer(long customerId) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.get(Customer.class, customerId);
+    }
+
+    /**
      * 保存客户。
      *
      * @param customer 需要保存的客户
@@ -35,5 +46,15 @@ public class CustomerDao {
     public void save(Customer customer) {
         Session session = sessionFactory.getCurrentSession();
         session.persist(customer);
+    }
+
+    /**
+     * 更新客户。
+     *
+     * @param customer 最新的客户数据
+     */
+    public void update(Customer customer) {
+        Session session = sessionFactory.getCurrentSession();
+        session.merge(customer);
     }
 }

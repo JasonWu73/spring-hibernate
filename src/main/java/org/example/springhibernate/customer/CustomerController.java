@@ -5,10 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,27 +30,46 @@ public class CustomerController {
     }
 
     /**
-     * 新增客户页。
+     * 新增客户的表单页。
      *
      * @param model 用于绑定视图层数据
-     * @return 新增客户页
+     * @return 客户表单页
      */
-    @GetMapping("/add")
-    public String addCustomer(Model model) {
+    @GetMapping("/form-add")
+    public String formForAdd(Model model) {
         model.addAttribute("customer", new Customer());
-        return "add-customer";
+        return "customer-form";
     }
 
     /**
-     * 保存客户。
+     * 修改客户的表单页。
+     *
+     * @param model 用于绑定视图层数据
+     * @return 客户表单页
+     */
+    @GetMapping("/form-update")
+    public String formForUpdate(@RequestParam long customerId,
+                                Model model) {
+        Customer customer = customerService.getCustomer(customerId);
+        model.addAttribute("customer", customer);
+        return "customer-form";
+    }
+
+    /**
+     * 保存客户（新增或修改）。
      *
      * @return 保存成功则重定向至客户列表页
      */
     @PostMapping("/save")
-    public String saveCustomer(@ModelAttribute @Valid Customer customer, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) return "add-customer";
+    public String saveCustomer(@ModelAttribute @Valid Customer customer,
+                               BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) return "customer-form";
 
-        customerService.save(customer);
+        if (customer.getId() == null) {
+            customerService.save(customer);
+        } else {
+            customerService.update(customer);
+        }
         return "redirect:/customer";
     }
 }
