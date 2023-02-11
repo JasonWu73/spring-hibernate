@@ -7,12 +7,12 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-@Order(2)
-public class MyDemoLoggingAspect {
+@Order(3)
+public class MyApiAnalyticsAspect {
 
     // execution(modifiers-pattern? return-type-pattern declaring-type-pattern? method-name-pattern(param-pattern) throws-pattern?)
     @Before("org.example.springhibernate.aspect.PointcutAspect.forDaoPkgNoGetterSetter()")
-    public void beforeAddAccountAdvice() {
-        System.out.println("=====> Executing Demo Logging");
+    public void performApiAnalytics() {
+        System.out.println("=====> Performing API Analytics");
     }
 }
