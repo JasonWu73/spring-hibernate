@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class MyDemoLoggingAspect {
 
     // execution(modifiers-pattern? return-type-pattern declaring-type-pattern? method-name-pattern(param-pattern) throws-pattern?)
-    @Before("execution(* add*())")
+    @Before("execution(* add*(.., org.example.springhibernate.dto.Account, ..))")
     public void beforeAddAccountAdvice() {
         System.out.println("=====> Executing @Before advice on add prefix method");
     }
