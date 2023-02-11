@@ -14,11 +14,13 @@ public class MainDemoApp {
 
         final AccountDao accountDao = context.getBean("accountDao", AccountDao.class);
         accountDao.addAccount(new Account(), true);
+        accountDao.doWork();
 
         System.out.println();
 
         final MembershipDao membershipDao = context.getBean("membershipDao", MembershipDao.class);
         membershipDao.addSillyMember();
+        membershipDao.goToSleep();
 
         // close the context
         context.close();
