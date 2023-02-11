@@ -18,4 +18,9 @@ public class MyDemoLoggingAspect {
     public void beforeAddAccountAdvice() {
         System.out.println("=====> Executing @Before advice on the method");
     }
+
+    @Before("pointcutForDaoPackageMethod()")
+    public void performApiAnalytics() {
+        System.out.println("=====> Performing API Analytics");
+    }
 }
