@@ -17,7 +17,7 @@ public class MainDemoApp {
         System.out.println();
 
         final MembershipDao membershipDao = context.getBean("membershipDao", MembershipDao.class);
-        membershipDao.addAccount();
+        membershipDao.addSillyMember();
 
         // close the context
         context.close();
