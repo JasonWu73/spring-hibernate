@@ -2,6 +2,7 @@ package org.example.springhibernate;
 
 import org.example.springhibernate.config.AppConfig;
 import org.example.springhibernate.dao.AccountDao;
+import org.example.springhibernate.dao.MembershipDao;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class MainDemoApp {
@@ -10,17 +11,13 @@ public class MainDemoApp {
         // read spring config java class
         final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
-        // get the bean from spring container
         final AccountDao accountDao = context.getBean("accountDao", AccountDao.class);
-
-        // call the business method
         accountDao.addAccount();
 
-        // all it again
-        System.out.println("\ncall it again\n");
+        System.out.println();
 
-        // call the business method again
-        accountDao.addAccount();
+        final MembershipDao membershipDao = context.getBean("membershipDao", MembershipDao.class);
+        membershipDao.addAccount();
 
         // close the context
         context.close();
