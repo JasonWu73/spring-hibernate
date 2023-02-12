@@ -5,12 +5,24 @@ import lombok.Setter;
 import org.example.springhibernate.dto.Account;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Repository
 public class AccountDao {
 
     private String name;
 
     private String serviceCode;
+
+    public List<Account> findAccounts() {
+        final ArrayList<Account> accounts = new ArrayList<>();
+        accounts.add(new Account("John", "Silver"));
+        accounts.add(new Account("Madhu", "Platinum"));
+        accounts.add(new Account("Luca", "Gold"));
+
+        return accounts;
+    }
 
     public void addAccount(final Account account, final boolean vipFlag) {
         System.out.println(getClass() + ": DOING MY DB WORK: ADDING AN ACCOUNT");
