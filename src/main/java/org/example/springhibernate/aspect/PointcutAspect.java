@@ -1,9 +1,7 @@
 package org.example.springhibernate.aspect;
 
-import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 
-@Aspect
 public class PointcutAspect {
 
     @Pointcut("execution(* org.example.springhibernate.dao.*.*(..))")
