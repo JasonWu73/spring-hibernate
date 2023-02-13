@@ -5,7 +5,7 @@ import org.example.springhibernate.config.AppConfig;
 import org.example.springhibernate.dao.AccountDao;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class AfterDemoApp {
+public class AfterOrAroundDemoApp {
 
   public static void main(final String[] args) {
     final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
