@@ -15,7 +15,9 @@ public class AccountDao {
 
     private String serviceCode;
 
-    public List<Account> findAccounts() {
+    public List<Account> findAccounts(final boolean tripWire) {
+        if (tripWire) throw new RuntimeException("Trip Wire Exception");
+
         final ArrayList<Account> accounts = new ArrayList<>();
         accounts.add(new Account("John", "Silver"));
         accounts.add(new Account("Madhu", "Platinum"));

@@ -8,13 +8,13 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import java.util.List;
 
-public class AfterReturningDemoApp {
+public class AfterThrowingDemoApp {
 
     public static void main(final String[] args) {
         final AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 
         final AccountDao accountDao = ctx.getBean("accountDao", AccountDao.class);
-        final List<Account> accounts = accountDao.findAccounts(false);
+        final List<Account> accounts = accountDao.findAccounts(true);
         Console.log("AccountDao After Returning:\n{}", accounts);
 
         ctx.close();

@@ -3,6 +3,7 @@ package org.example.springhibernate.aspect;
 import cn.hutool.core.lang.Console;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.reflect.MethodSignature;
@@ -17,6 +18,17 @@ import java.util.List;
 @Component
 @Order(2)
 public class MyDemoLoggingAspect {
+
+    @AfterThrowing(
+        pointcut = "execution(java.util.List org.example.springhibernate.dao.AccountDao.findAccounts(..))",
+        throwing = "exc"
+    )
+    public void afterReturningFindAccountsAdvice(final JoinPoint joinPoint, final Throwable exc) {
+        final String methName = joinPoint.getSignature().toShortString();
+        Console.log("-> @AfterThrowing call method: {}", methName);
+        Console.log("-> Log exception: {}", exc);
+        // throw new RuntimeException("@AfterThrowing test exception");
+    }
 
     @AfterReturning(
         pointcut = "execution(java.util.List org.example.springhibernate.dao.AccountDao.findAccounts(..))",
