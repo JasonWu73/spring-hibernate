@@ -2,10 +2,7 @@ package org.example.springhibernate.aspect;
 
 import cn.hutool.core.lang.Console;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.AfterThrowing;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.example.springhibernate.dto.Account;
 import org.springframework.core.annotation.Order;
@@ -19,44 +16,50 @@ import java.util.List;
 @Order(2)
 public class MyDemoLoggingAspect {
 
-    @AfterThrowing(
-        pointcut = "execution(java.util.List org.example.springhibernate.dao.AccountDao.findAccounts(..))",
-        throwing = "exc"
-    )
-    public void afterReturningFindAccountsAdvice(final JoinPoint joinPoint, final Throwable exc) {
-        final String methName = joinPoint.getSignature().toShortString();
-        Console.log("-> @AfterThrowing call method: {}", methName);
-        Console.log("-> Log exception: {}", exc);
-        // throw new RuntimeException("@AfterThrowing test exception");
-    }
+  @After("execution(* org.example.springhibernate.dao.AccountDao.findAccounts(..))")
+  public void afterFindAccountsAdvice(final JoinPoint joinPoint) {
+    final String methodName = joinPoint.getSignature().toShortString();
+    Console.log("-> @After: {}", methodName);
+  }
 
-    @AfterReturning(
-        pointcut = "execution(java.util.List org.example.springhibernate.dao.AccountDao.findAccounts(..))",
-        returning = "result"
-    )
-    public void afterReturningFindAccountsAdvice(final JoinPoint joinPoint, final List<Account> result) {
-        final String methName = joinPoint.getSignature().toShortString();
-        Console.log("-> @AfterReturning call method: {}", methName);
+  @AfterThrowing(
+    pointcut = "execution(java.util.List org.example.springhibernate.dao.AccountDao.findAccounts(..))",
+    throwing = "exc"
+  )
+  public void afterReturningFindAccountsAdvice(final JoinPoint joinPoint, final Throwable exc) {
+    final String methName = joinPoint.getSignature().toShortString();
+    Console.log("-> @AfterThrowing call method: {}", methName);
+    Console.log("-> Log exception: {}", exc);
+    // throw new RuntimeException("@AfterThrowing test exception");
+  }
 
-        Console.log("-> Original Result:\n{}", result);
+  @AfterReturning(
+    pointcut = "execution(java.util.List org.example.springhibernate.dao.AccountDao.findAccounts(..))",
+    returning = "result"
+  )
+  public void afterReturningFindAccountsAdvice(final JoinPoint joinPoint, final List<Account> result) {
+    final String methName = joinPoint.getSignature().toShortString();
+    Console.log("-> @AfterReturning call method: {}", methName);
 
-        result.forEach(acct -> {
-            if (!acct.getName().equals("John")) return;
+    Console.log("-> Original Result:\n{}", result);
 
-            acct.setName("Changed: " + acct.getName());
-            acct.setLevel("Changed: " + acct.getLevel());
-        });
-    }
+    result.forEach(acct -> {
+      if (!acct.getName().equals("John")) return;
 
-    // execution(modifiers-pattern? return-type-pattern declaring-type-pattern? method-name-pattern(param-pattern) throws-pattern?)
-    @Before("org.example.springhibernate.aspect.PointcutAspect.forDaoPkgNoGetterSetter()")
-    public void beforeAddAccountAdvice(final JoinPoint joinPoint) {
-        System.out.println("-> @Before: executing demo logging");
+      acct.setName("Changed: " + acct.getName());
+      acct.setLevel("Changed: " + acct.getLevel());
+    });
+  }
 
-        final MethodSignature methSig = (MethodSignature) joinPoint.getSignature();
-        System.out.println("-> Method: " + methSig);
+  // execution(modifiers-pattern? return-type-pattern declaring-type-pattern? method-name-pattern(param-pattern) throws-pattern?)
+  @Before("org.example.springhibernate.aspect.PointcutAspect.forDaoPkgNoGetterSetter()")
+  public void beforeAddAccountAdvice(final JoinPoint joinPoint) {
+    System.out.println("-> @Before: executing demo logging");
 
-        Arrays.stream(joinPoint.getArgs())
-            .forEach(arg -> Console.log("-> arg: {}: {}", arg.getClass(), arg));
-    }
+    final MethodSignature methSig = (MethodSignature) joinPoint.getSignature();
+    System.out.println("-> Method: " + methSig);
+
+    Arrays.stream(joinPoint.getArgs())
+      .forEach(arg -> Console.log("-> arg: {}: {}", arg.getClass(), arg));
+  }
 }
