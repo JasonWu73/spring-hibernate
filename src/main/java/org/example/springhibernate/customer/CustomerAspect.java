@@ -20,6 +20,8 @@ public class CustomerAspect {
   public void beforeCustomerOperation(final JoinPoint joinPoint) {
     final String methodName = joinPoint.getSignature().toShortString();
     Console.log("=====> @Before: {}", methodName);
+
+    Console.log("=====> args: {}", joinPoint.getArgs());
   }
 
   @AfterReturning(
