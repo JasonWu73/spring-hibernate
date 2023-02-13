@@ -19,7 +19,7 @@ public class AfterDemoApp {
       Console.log("\nCall find accounts method when throw exception");
       accountDao.findAccounts(true);
     } catch (Exception e) {
-      Console.log("Catch expected exception: {}", e);
+      Console.error("Catch expected exception: {}", e);
     }
 
     context.close();

@@ -2,6 +2,7 @@ package org.example.springhibernate.aspect;
 
 import cn.hutool.core.lang.Console;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.example.springhibernate.dto.Account;
@@ -15,6 +16,26 @@ import java.util.List;
 @Component
 @Order(2)
 public class MyDemoLoggingAspect {
+
+  @Around("execution(* org.example.springhibernate.dao.AccountDao.findAccounts(..))")
+  public Object aroundFindAccountsAdvice(final ProceedingJoinPoint joinPoint) throws Throwable {
+    final String methodName = joinPoint.getSignature().toShortString();
+    Console.log("-> @Around: {}", methodName);
+
+    final long startMilliseconds = System.currentTimeMillis();
+
+    try {
+      final Object result = joinPoint.proceed();
+      Console.log("-> @Around: result={}", result);
+      return result;
+    } catch (Throwable e) {
+      Console.log("-> @Around: handle exception: {}", e);
+      throw e;
+    } finally {
+      final long endMilliseconds = System.currentTimeMillis();
+      Console.log("Executing cost {} milliseconds", endMilliseconds - startMilliseconds);
+    }
+  }
 
   @After("execution(* org.example.springhibernate.dao.AccountDao.findAccounts(..))")
   public void afterFindAccountsAdvice(final JoinPoint joinPoint) {
