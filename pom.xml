@@ -137,6 +137,20 @@
       <artifactId>spring-orm</artifactId>
       <version>${spring.version}</version>
     </dependency>
+
+    <!-- Spring AOP -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-aop</artifactId>
+      <version>6.0.4</version>
+    </dependency>
+
+    <!-- Spring AOP 依赖于 AspectJ -->
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjweaver</artifactId>
+      <version>1.9.19</version>
+    </dependency>
   </dependencies>
 
   <build>
