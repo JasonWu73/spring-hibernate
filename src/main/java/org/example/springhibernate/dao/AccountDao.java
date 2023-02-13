@@ -1,5 +1,6 @@
 package org.example.springhibernate.dao;
 
+import cn.hutool.core.thread.ThreadUtil;
 import lombok.Getter;
 import lombok.Setter;
 import org.example.springhibernate.dto.Account;
@@ -16,6 +17,8 @@ public class AccountDao {
     private String serviceCode;
 
     public List<Account> findAccounts(final boolean tripWire) {
+        ThreadUtil.sleep(500);
+
         if (tripWire) throw new RuntimeException("Trip Wire Exception");
 
         final ArrayList<Account> accounts = new ArrayList<>();
