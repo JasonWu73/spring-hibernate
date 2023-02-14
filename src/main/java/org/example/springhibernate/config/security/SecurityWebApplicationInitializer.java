@@ -1,4 +1,4 @@
-package org.example.springhibernate.config;
+package org.example.springhibernate.config.security;
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 
