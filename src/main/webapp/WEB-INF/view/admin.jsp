@@ -8,9 +8,5 @@
   </head>
   <body>
     <h1>Admin Page</h1>
-
-    <form:form action="${pageContext.request.contextPath}/logout" method="post">
-      <button type="submit">Logout</button>
-    </form:form>
   </body>
 </html>

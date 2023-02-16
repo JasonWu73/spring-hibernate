@@ -8,6 +8,6 @@ public class IndexPageController {
 
   @GetMapping("/")
   public String showIndexPage() {
-    return "redirect:/admin";
+    return "redirect:/home";
   }
 }
