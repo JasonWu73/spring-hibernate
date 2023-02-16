@@ -54,7 +54,7 @@ public class SecurityConfig {
       .build();
     final UserDetails mary = User.withUsername("mary")
       .password(passwordEncoder().encode("111"))
-      .roles("MANAGER")
+      .roles("EMPLOYEE", "MANAGER")
       .build();
     final UserDetails susan = User.withUsername("susan")
       .password(passwordEncoder().encode("111"))
