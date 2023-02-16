@@ -33,7 +33,9 @@ public class SecurityConfig {
       .authorizeHttpRequests()
       .anyRequest().authenticated()
       .and()
-      .formLogin();
+      .formLogin().permitAll()
+      .and()
+      .logout().permitAll();
 
     return http.build();
   }
@@ -46,15 +48,15 @@ public class SecurityConfig {
   @Bean
   public UserDetailsService userDetailsService() {
     final UserDetails john = User.withUsername("john")
-      .password(passwordEncoder().encode("test123"))
+      .password(passwordEncoder().encode("111"))
       .roles("EMPLOYEE")
       .build();
     final UserDetails mary = User.withUsername("mary")
-      .password(passwordEncoder().encode("test123"))
+      .password(passwordEncoder().encode("111"))
       .roles("MANAGER")
       .build();
     final UserDetails susan = User.withUsername("susan")
-      .password(passwordEncoder().encode("test123"))
+      .password(passwordEncoder().encode("111"))
       .roles("ADMIN")
       .build();
 
